@@ -1,0 +1,84 @@
+diff a/cobaoleh/admin/application/controllers/Data_barang.php b/cobaoleh/admin/application/controllers/Data_barang.php	(rejected hunks)
+@@ -59,6 +59,80 @@
+ 			echo "string1";
+ 		}
+ 	}
+-}
++	}
++	public function edit($id){
++		$row = $this -> Databarang_model -> get_by_id($id);
++		$this -> load -> library('encrypt');
++		if($row){
++			$data = array(
++				'ID_BARANG' => $row -> ID_BARANG,
++				'ID_ADMIN' => $row -> ID_ADMIN,
++				'NAMA_BARANG' => $row -> NAMA_BARANG,
++				'BERAT' => $row -> BERAT,
++				'DESKRIPSI' => $row -> DESKRIPSI,
++				'IMG' => $row -> IMG,
++				'HARGA_BARANG' => $row -> HARGA_BARANG,
++				'STOK' => $row -> STOK,
++			);
++			$this -> load -> view('Datamaster/Edit_barang',$data);
++		}
++		else{
++			redirect(base_url().'Data_barang');
++		}
++	}
++	public function editaction(){
++		$config = array('upload_path' => './assets/webadmin/img/',
++        					'allowed_types' => 'gif|jpg|png'
++        					);
++        $this -> load -> library ('upload',$config);
++        $adminn = $this -> input -> post('adminn');
++        $nm_barang = $this -> input -> post('nama_brg');
++        $hrg = $this -> input -> post('hrg');
++        $des = $this -> input -> post('des');
++        $brt = $this -> input -> post('brt');
++        $stokk = $this -> input -> post('stokk');
++        if($_FILES['img']['tmp_name']!=NULL){
++        	if($this -> upload -> do_upload('img')){
++        		$upload_data = $this -> upload -> data();
++        		$row = $this -> Data_obat -> get_by_id($this -> input -> post('id'));
++        		unlink($row -> img);
++        		$data = array(
++        			'ID_ADMIN' => $adminn,
++        			'NAMA_BARANG' => $nm_barang,
++        			'BERAT' => $brt,
++        			'DESKRIPSI' => $des,
++        			'IMG' => "assets/webadmin/img/".$upload_data['file_name'],
++        			'HARGA_BARANG' => $hrg,
++        			'STOK' => $stokk,
++        		);
++        		$res = $this -> Databarang_model -> update ($this -> input -> post('id'),$data);
++        		if ($res >= 0) {
++        			header('location:'.base_url().'index.php/Data_barang');
++        		}
++        	}
++        }else{
++        	$data = array(
++        			'ID_ADMIN' => $adminn,
++        			'NAMA_BARANG' => $nm_barang,
++        			'BERAT' => $brt,
++        			'DESKRIPSI' => $des,
++        			'HARGA_BARANG' => $hrg,
++        			'STOK' => $stokk,
++        		);
++        		$res = $this -> Databarang_model -> update ($this -> input -> post('id'),$data);
++        		if ($res >= 0 ) {
++        			header('location:'.base_url('index.php/Data_barang'));
++        		}
++        }
++	}
++	public function hapus($id){
++		$res = $this -> Databarang_model -> delete($id);
++		if($res){
++		header('location:'.base_url('index.php/Data_barang'));
++		}
++		else{
++			header('location:'.base_url('index.php/Data_barang'));
++		}
++	}
+ }
+ ?>
+\ No newline at end of file
