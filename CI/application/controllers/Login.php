@@ -26,11 +26,12 @@ class Login extends CI_Controller {
  
             $data_session = array(
                 'id_pelanggan'   => $cek2 -> ID_PELANGGAN,
+                'nama' => $cek2 -> NAMA_PEL,
                 'email' => $email,
                 'status' => "login"
                 );
             
-            $data_session=$this->session->userdata('id_pelanggan'); 
+            $this -> session -> set_userdata($data_session);
             redirect(base_url("index.php/Home"));
  
         }else{
