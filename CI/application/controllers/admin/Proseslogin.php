@@ -26,7 +26,7 @@ class Proseslogin extends CI_Controller {
  
             $data_session = array(
                 'ID_ADMIN'   => $cek2-> ID_ADMIN,
-                'nama' => $username,
+                'nama' => $cek2 -> NAMA_ADMIN,
                 'status' => "login"
                 );
  
@@ -42,6 +42,6 @@ class Proseslogin extends CI_Controller {
  
     function logout(){
         $this->session->sess_destroy();
-        redirect(base_url('index.php/proseslogin'));
+        redirect(base_url('index.php/admin/Proseslogin'));
     }
 }

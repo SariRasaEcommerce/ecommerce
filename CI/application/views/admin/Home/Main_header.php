@@ -39,14 +39,14 @@
 							</ul>
 						</li>
 						<li class="nav-item dropdown">
-							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false"> <img src="http://localhost/sarirasa/website/CI/assets/admin/webadmin/img/profile.jpg" alt="user-img" width="36" class="img-circle"><span>Admin</span> </a>
+							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false"> <img src="<?php echo base_url() ?>assets/admin/webadmin/img/profile.jpg" alt="user-img" width="36" class="img-circle"><span>Admin</span> </a>
 							<ul class="dropdown-menu dropdown-user">
 								<li>
 									<div class="user-box">
-										<div class="u-img"><img src="assets/admin/webadmin/img/profile.jpg" alt="user"></div>
+										<div class="u-img"><img src="<?php echo base_url() ?>assets/admin/webadmin/img/profile.jpg" alt="user"></div>
 										<div class="u-text">
 											<!-- <h4></h4> -->
-											<!-- <p class="text-muted">rahmadi@gmail.com</p></div> -->
+											<p class="text-muted"><?php echo $this->session->userdata('nama'); ?></p>
 										</div>
 									</div></li>
 									<div class="dropdown-divider"></div>
@@ -56,7 +56,7 @@
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="#"><i class="ti-settings"></i>Pengaturan</a>
 									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="http://localhost/sarirasa/website/CI/index.php/admin/webadmin/Proseslogin/logout"><i class="fa fa-power-off"></i>Keluar</a>
+									<a class="dropdown-item" href="<?php echo base_url() ?>index.php/admin/Proseslogin/logout"><i class="fa fa-power-off"></i>Keluar</a>
 								</ul>
 								<!-- /.dropdown-user -->
 							</li>
