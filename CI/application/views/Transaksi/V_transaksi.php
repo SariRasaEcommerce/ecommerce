@@ -41,7 +41,6 @@
 					<div id="collapseOne" class="accordion-body in collapse">
 						<div class="page-content">
 
-
 							<!-- Panel Table Add Row -->
 							
 									<div class="panel">
@@ -50,10 +49,15 @@
 												<form autocomplete="off" method="post" action="<?php echo base_url(). 'Transaksi/aksi_upload'; ?>" enctype="multipart/form-data">
 													<div class="col-md-6 col-lg-4">
 														<h4 class="example-title">Upload Bukti Pembayaran</h4>
-														<div class="example">
+														<div class="form-group">
+                                                			<label for="exampleFormControlFile1">Masukkan gambar
+                                               				 </label>
+                                                			<input type="file" class="form-control-file" id="exampleFormControlFile1" name="img" accept="images/*">
+                                            			</div>   
+														<!-- <div class="example">
 															<input type="file" id="input-file-events" class="dropify-event" data-default-file="../../global/photos/view-6-960x640.jpg" name="GAMBAR_TF">
 															
-														</div>
+														</div> -->
 
 														<div class="form-group form-material floating" data-plugin="formMaterial">
 															<div class="input-group">
