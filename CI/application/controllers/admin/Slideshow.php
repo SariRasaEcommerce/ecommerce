@@ -22,35 +22,30 @@ class Slideshow extends CI_Controller {
 	public function insert(){
 		$this -> load -> view('admin/Slideshow/Tambah_slideshow');
 	}
+
 	public function create(){
-		if(isset($_POST['btnSubmit'])){
-        	$config = array('upload_path' => './assets/webadmin/img/',
-        					'allowed_types' => 'gif|jpg|png'
-        					);
-        	$this -> load -> library ('upload',$config);
-        	if ($this->upload->do_upload('img'))
-    		{
-        		$upload_data = $this -> upload -> data ();
-        		$adminn = $this-> input -> post ('adminn');
-        		$foto = "assets/webadmin/img/".$upload_data['file_name'];
-				$data = array(
-				'ID_SLIDE' => $this->session->userdata('ID_BARANG'),
+		$config = array(
+			'upload_path' => './gambar/slideshow/',
+    		'allowed_types' => 'gif|jpg|png'
+    	);
+    	$this->load->library('upload', $config);
+    	if ($this->upload->do_upload('img')){
+    		$upload_data = $this -> upload -> data ();
+    		$adminn = $this->session->userdata('ID_ADMIN');
+    		$foto = "./gambar/slideshow/".$upload_data['file_name'];
+			$data = array(
+				'ID_SLIDE' => $this->session->userdata('ID_SLIDE'),
 				'ID_ADMIN' => $adminn,
 				'IMG' => $foto,
-				);
-				$insert_data = $this->db->insert('tbl_slideshow',$data);
-			if ($insert_data) {
+			);
+			$insert_data = $this->db->insert('tbl_slideshow',$data);
+			if($insert_data >=0) {
 				redirect(base_url().'index.php/admin/Slideshow');
-			 } else{
+			}else{
 				echo "string";
-			 }
-		}
-		else
-		{
-			echo "string1";
+			}
 		}
 	}
-}
 
 public function edit($id){
 		$row = $this -> Slideshow_model -> get_by_id($id);

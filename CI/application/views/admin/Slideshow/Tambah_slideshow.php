@@ -18,10 +18,10 @@
                                                     <option>1</option>
                                                 </select>
                                             </div> -->
-                                            <div class="form-group">
+                                            <!-- <div class="form-group">
                                                 <label for="pillInput">ID Admin</label>
                                                 <input type="text" class="form-control input-pill" id="pillInput" placeholder="Masukkan ID Admin" name="adminn">
-                                            </div>
+                                            </div> -->
                                             <div class="form-group">
                                                 <label for="exampleFormControlFile1">Masukkan gambar
                                                 </label>
