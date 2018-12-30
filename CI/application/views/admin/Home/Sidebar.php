@@ -55,13 +55,13 @@
 <!-- 								<span class="badge badge-danger">25</span>
  -->							</a>
 						</li>
-						<li class="nav-item">
+						<!-- <li class="nav-item">
 							<a href="<?php echo base_url() ?>index.php/admin/Slideshow">
 								<i class="la la-table"></i>
 								<p>Data Slideshow</p>
 <!-- 								<span class="badge badge-danger">25</span>
  -->							</a>
-						</li>
+						</li> -->
 						<!-- <li class="nav-item">
 							<a href="icons.html">
 								<i class="la la-fonticons"></i>
