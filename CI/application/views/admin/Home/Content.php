@@ -1,13 +1,13 @@
 <div class="main-panel">
 	<div class="content">
 		<div class="container-fluid">
-			<h4 class="page-title">Typography</h4>
+			<h4 class="page-title"></h4>
 			<div class="row">
 				<div class="col-md-12">
 					<div class="card" style="padding: 20px">
-						<h4 class="page-title">Beranda</h4>
+						<h4 class="page-title">Selamat datang di Menu Administrator :)</h4>
 						<div class="row">
-							<div class="col-md-3">
+							<!-- <div class="col-md-3">
 								<div class="card card-stats card-warning">
 									<div class="card-body ">
 										<div class="row">
@@ -82,5 +82,5 @@
 										</div>
 									</div>
 								</div>
-							</div>
+							</div> -->
 						</div>
