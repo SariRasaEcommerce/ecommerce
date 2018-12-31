@@ -3,17 +3,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Login extends CI_Controller {
 
-	function __construct(){
+    function __construct(){
         parent::__construct();      
         $this->load->model('M_login');
     }
 
-	public function index()
-	{
-		$this -> load -> view('Login/Main_content');
-	}
+    public function index()
+    {
+        $this -> load -> view('Login/Main_content');
+    }
 
- 	function aksi_login(){
+    function aksi_login(){
         $email = $this->input->post('Email');
         $password = $this->input->post('Password');
         $where = array(
@@ -22,21 +22,21 @@ class Login extends CI_Controller {
             );
         $cek = $this->M_login->cek_login("tbl_pelanggan",$where)->num_rows();
         $cek2 = $this->M_login->cek_login("tbl_pelanggan",$where)->row();
-        if($cek > 0){
+        if($cek > 0  && $cek2 ->STATUS_PEL == "Terkonfirmasi"){
  
             $data_session = array(
-                'id_pelanggan'   => $cek2 -> ID_PELANGGAN,
-                'nama' => $cek2 -> NAMA_PEL,
+                'id_pelanggan' => $cek2 ->ID_PELANGGAN,
+                'nama' => $cek2 ->NAMA_PEL,
                 'email' => $email,
                 'status' => "login"
                 );
-            
+ 
             $this -> session -> set_userdata($data_session);
+ 
             redirect(base_url("index.php/Home"));
  
         }else{
-            
-            redirect(base_url("Login"));
+            redirect(base_url("index.php/Login"));
         }
     }
  
@@ -53,6 +53,7 @@ class Login extends CI_Controller {
         $tgl_lahir = $this->input->post('tanggal');
         $email = $this->input->post('email');
         $password = $this->input->post('password');
+        $status = "Belum Terkonfirmasi";
         $where = array(
             'nama_pel' => $nama_pel,
             'alamat_pel' => $alamat_pel,
@@ -60,7 +61,8 @@ class Login extends CI_Controller {
             'jk' => $jk,
             'tgl_lahir' => $tgl_lahir,
             'email' => $email,
-            'password' => $password           
+            'password' => $password,   
+            'status_pel' => $status        
             );
         $this -> M_login -> register('tbl_pelanggan',$where);
         redirect(base_url("Login"));
